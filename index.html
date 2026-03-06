@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock de Cores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="lines-bg"></div>
+  <div class="app">
+    <header>
+      <h1>Biblioteca de Cores</h1>
+      <p class="subtitle">Gestão de Stock e Composições</p>
+    </header>
+
+    <main>
+      <div class="app-menu">
+        <button onclick="showSector('addSector')"><i class="fa fa-plus"></i> Adicionar</button>
+        <button onclick="showSector('searchSector')"><i class="fa fa-search"></i> Pesquisa</button>
+        <button onclick="showSector('updateSector')"><i class="fa fa-sync-alt"></i> Atualizar</button>
+        <button onclick="showSector('historySector')"><i class="fa fa-history"></i> Histórico</button>
+        <button class="delete-btn" onclick="showSector('deleteSector')"><i class="fa fa-trash"></i> Eliminar</button>
+      </div>
+
+      <div class="message" id="message"></div>
+
+      <!-- ADICIONAR -->
+      <div id="addSector" class="sector">
+        <div class="card">
+          <h2>Adicionar nova cor</h2>
+          <form id="addForm">
+            <input type="text" id="addColorName" placeholder="Nome ou Nº Pantone" required>
+            <input type="text" id="addHex" placeholder="Código HEX (#ffffff)">
+            <input type="text" id="addShelf" placeholder="Prateleira" required>
+            <input type="text" id="addSectorName" placeholder="Setor" required>
+            <input type="number" id="addQuantity" placeholder="Quantidade (kg)" min="0" step="0.01" required>
+            <input type="password" id="addPin" placeholder="PIN autorizado" required>
+            <input type="submit" value="Adicionar Cor">
+          </form>
+          <div class="color-sample" id="colorSample"></div>
+        </div>
+      </div>
+
+      <!-- PESQUISA -->
+      <div id="searchSector" class="sector" style="display:none;">
+        <div class="card">
+          <h2>Pesquisa</h2>
+          <input type="text" id="searchInput" placeholder="Nome ou Código HEX">
+          <button onclick="searchColor()">Pesquisar</button>
+          <div id="searchResult"></div>
+          <div class="color-sample" id="searchSample"></div>
+        </div>
+      </div>
+
+      <!-- UPDATE -->
+      <div id="updateSector" class="sector" style="display:none;">
+        <div class="card">
+          <h2>Atualizar Stock</h2>
+          <select id="updateSelect"></select>
+          <input type="text" id="updateHex" placeholder="Código HEX (#ffffff)">
+          <div class="color-sample" id="updateSample"></div>
+          <input type="number" id="updateQuantity" placeholder="Adicionar/Subtrair">
+          <input type="text" id="updateShelf" placeholder="Alterar Prateleira (opcional)">
+          <input type="text" id="updateSectorName" placeholder="Alterar Setor (opcional)">
+          <input type="password" id="updatePin" placeholder="PIN">
+          <button onclick="updateStock()">Atualizar</button>
+          <div id="updateMessage"></div>
+        </div>
+      </div>
+
+      <!-- HISTÓRICO -->
+      <div id="historySector" class="sector" style="display:none;">
+        <div class="card">
+          <h2>Histórico</h2>
+          <ul id="historyList"></ul>
+        </div>
+      </div>
+
+      <!-- ELIMINAR -->
+      <div id="deleteSector" class="sector" style="display:none;">
+        <div class="card">
+          <h2>Eliminar Produto</h2>
+          <select id="deleteSelect"></select>
+          <input type="password" id="deletePin" placeholder="PIN autorizado">
+          <button onclick="deleteProduct()">Eliminar</button>
+          <div id="deleteMessage"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer>© 2026 Developed by Fernando Ferreira</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
