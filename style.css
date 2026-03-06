@@ -1,0 +1,122 @@
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  font-family:'Outfit',sans-serif;
+  background:#0a0a1a;
+  color:#e0e0f0;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ===== FUNDO LINHAS ===== */
+#lines-bg{
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(-0deg, #000, #000 10px, #112 20px, #110 500px);
+  z-index:0;
+  animation:moveLines 210s linear infinite, colorShift 40s linear infinite;
+}
+@keyframes moveLines{ from{background-position:0 0;} to{background-position:500px 500px;} }
+@keyframes colorShift{ from{filter:hue-rotate(0deg);} to{filter:hue-rotate(360deg);} }
+
+/* ===== APP ===== */
+.app{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px 60px;
+}
+header{ text-align:center; margin-bottom:30px; }
+h1{
+  font-size:2.8rem;
+  font-weight:700;
+  background:linear-gradient(135deg,#7b68ee,#00d4ff,#50fa7b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.subtitle{
+  font-size:0.9rem;
+  opacity:0.6;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:6px;
+}
+
+/* ===== MENU ===== */
+.app-menu{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+.app-menu button{
+  width:4cm;
+  padding:12px 0;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+}
+.app-menu button::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  top:-50%;
+  left:-50%;
+  background:linear-gradient(120deg, rgba(123,104,238,0.4), rgba(0,212,255,0.4), rgba(80,250,123,0.4));
+  filter:blur(40px);
+  animation:rotateAurora 8s linear infinite;
+}
+@keyframes rotateAurora{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.app-menu button:hover{ transform:translateY(-3px); box-shadow:0 10px 25px rgba(123,104,238,0.4); }
+
+/* ===== CARDS ===== */
+.sector{ max-width:700px; margin:auto; margin-bottom:40px; }
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:25px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+.card h2{ text-align:center; margin-bottom:15px; }
+
+/* ===== INPUTS ===== */
+input,select,button{ width:100%; margin:10px 0; padding:12px; border-radius:12px; border:none; font-family:'Outfit',sans-serif; }
+input,select{ background:rgba(0,0,0,0.3); color:#fff; }
+input[type="submit"], .card button{
+  background:linear-gradient(135deg,#7b68ee,#00d4ff);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+input[type="submit"]:hover, .card button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,212,255,0.4);
+}
+.message{ text-align:center; margin-bottom:15px; color:#50fa7b; }
+
+/* ===== AMOSTRA 4x3 CM ===== */
+.color-sample{
+  margin:15px auto;
+  width:4cm;
+  height:3cm;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+footer{ text-align:center; margin-top:40px; opacity:0.5; font-size:0.8rem; }
+
+.delete-btn{ margin-left:auto; background:rgba(255,0,0,0.08); border:1px solid rgba(255,0,0,0.25); }
+.delete-btn::before{ background:linear-gradient(120deg, rgba(255,0,0,0.6), rgba(255,80,80,0.6), rgba(150,0,0,0.6)); }
+.delete-btn:hover{ box-shadow:0 10px 25px rgba(255,0,0,0.5); }
